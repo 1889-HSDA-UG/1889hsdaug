@@ -251,8 +251,46 @@ nav {
   transform: scale(1.03);
 }
 
+/* Existing styles remain the same */
+
+/* Add these media queries at the end */
+@media (max-width: 768px) {
+  .committee-section {
+    padding: 1rem;
+  }
+
+  .chairperson {
+    margin-bottom: 1.5rem;
+  }
+
+  .chairperson img {
+    width: 80%; /* Adjust for mobile */
+    max-width: 300px;
+  }
+
+  .committee-grid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 1.5rem;
+  }
+
+  .committee-member img {
+    max-width: 100%; /* Full width for member images */
+  }
+}
+
+@media (max-width: 480px) {
+  .chairperson img {
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .committee-member {
+    padding: 1rem;
+  }
+}
+
 /* =========================== */
-/* Services & Cards            */
+/*Worship Places            */
 /* =========================== */
 /* Services Card Styling */
 .service-cards {
