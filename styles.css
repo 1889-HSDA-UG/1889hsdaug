@@ -745,3 +745,19 @@ input, textarea {
     padding: 1rem;
   }
 }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-img {
+  height: 50px; /* Adjust based on your logo */
+  width: auto;
+}
+/* mobile logo css*/
+@media (max-width: 768px) {  
+  .logo-img {
+    height: 40px; /* Smaller logo on mobile */
+  }
+}
