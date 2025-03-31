@@ -1,3 +1,79 @@
+/* Committee Section Fixes */
+.committee-section {
+  margin-top: 2rem;
+  width: 100%; /* Add this */
+}
+
+.chairperson {
+  text-align: center;
+  margin-bottom: 2rem;
+  width: 100%; /* Add this */
+}
+
+.chairperson img {
+  width: 50%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 8px;
+  margin: 0 auto 1rem; /* Center the image */
+  display: block; /* Add this */
+}
+
+.committee-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%; /* Add this */
+}
+
+.committee-member {
+  width: 100%; /* Add this */
+  overflow: hidden; /* Prevent image overflow */
+}
+
+.committee-member img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  margin: 0 auto 1rem; /* Center images */
+  display: block; /* Add this */
+}
+
+/* Updated Media Queries */
+@media (max-width: 768px) {
+  .committee-section {
+    padding: 1rem;
+    max-width: 100vw; /* Prevent horizontal overflow */
+  }
+
+  .chairperson img {
+    width: 100%; /* Full width on mobile */
+    max-width: 300px; /* Keep reasonable max size */
+  }
+
+  .committee-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0; /* Remove any default padding */
+  }
+
+  .committee-member {
+    max-width: 100%; /* Ensure members don't overflow */
+    padding: 0 !important; /* Override any conflicting padding */
+  }
+}
+
+@media (max-width: 480px) {
+  .chairperson img {
+    max-width: 250px;
+  }
+  
+  .committee-member {
+    margin: 0 auto; /* Center members */
+  }
+}
+
 /* =========================== */
 /* Global Reset & Base Styles  */
 /* =========================== */
@@ -195,54 +271,10 @@ nav {
   font-size: 1.1rem;
   color: #333;
 }
-.committee-section {
-  margin-top: 2rem;
-}
 
-.chairperson {
-  text-align: center;
-  margin-bottom: 2rem;
-}
+/* Committee Section Fixes are already declared above, so duplicate rules have been removed */
 
-.chairperson img {
-  width: 50%;
-  max-width: 400px;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
-.committee-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-}
-
-.committee-member img {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
-.member-info {
-  text-align: center;
-}
-
-.position {
-  font-weight: bold;
-  color: #555;
-  margin: 0.3rem 0;
-}
-
-.address {
-  font-size: 0.9em;
-  color: #666;
-  margin: 0;
-}
 /* added */
-
 .committee-member img {
   transition: transform 0.3s ease;
 }
@@ -320,6 +352,7 @@ nav {
 #contact p {
   margin: 1rem 0;
 }
+
 /*Payment css*/
 .payment-methods {
   display: grid;
@@ -429,6 +462,7 @@ input, textarea {
 .submit-btn:hover {
   background: #34495e;
 }
+
 .ussd-button.airtel {
   background: #E20404;
 }
@@ -463,6 +497,7 @@ input, textarea {
 .visible {
   display: inline-block;
 }
+
 /* =========================== */
 /* Hero Image & Document Links */
 /* =========================== */
