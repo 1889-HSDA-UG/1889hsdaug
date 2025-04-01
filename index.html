@@ -85,6 +85,12 @@
 
   <section id="about" class="section content-section">
     <div class="rounded-rectangle">
+        <div class="about-tabs">
+            <button class="tab-link active" onclick="openTab(event, 'about-content')">About 1889 HSDA</button>
+            <button class="tab-link" onclick="openTab(event, 'committee-content')">Committee Members</button>
+            <button class="tab-link" onclick="openTab(event, 'missions-content')">Missions</button>
+        </div>
+        <div id="about-content" class="tab-content active">
         <h2>About 1889 HSDA UGANDA</h2>
       <p>1889 HSDA Uganda stands on a proud heritage that traces back to the foundational principles of 1872. In 1889, these enduring truths were revised and 3 fundamental principles added, marking a pivotal moment in our history. Our identity emerged in response to a critical divergence in doctrine when the GCSDA church, in its departure from original teachings, introduced a multi-faceted concept of the divine i.e the Trinity in 1980.</p>
       
@@ -95,53 +101,13 @@
       <p>It therefore follows that our mission is both bold and uncompromising: to repair the spiritual breach caused by apostasy and to restore the pure, original message handed down through generations. We are committed to reviving the original principles that have sustained believers through the ages, ensuring that the timeless truths of our forebears continue to illuminate the path for today's faithful.</p>
   
       <p>At 1889 HSDA Uganda, we are not bound by nostalgia but are forward-thinking in our approach. We engage with the modern world while holding fast to the unchanging core of our beliefs. Our work is a call to both renewal and accountability—a journey back to a genuine relationship with the One True God. We invite you to join us in rediscovering and upholding the true landmarks of our faith, as we collectively move towards a future rooted in the clarity and power of original truth.</p>
-    
-      <div class="committee-section">
-        <!-- Chairperson -->
-        <div class="chairperson">
-            <img src="images/committee-images/chairperson.jpg" alt="Chairperson">
-            <div class="member-info">
-                <h3>Kanoni Erick</h3>
-                <p class="position">Uganda Conference Chairman</p>
-                <p class="address">Mukono, Uganda</p>
-            </div>
-        </div>
-   <!-- Other Committee Members -->
-   <div class="committee-grid">
-    <!-- Repeated blocks for 8 members -->
-    <div class="committee-member">
-        <img src="images/committee-images/vice-chairperson.jpg" alt="Committee Member">
-        <div class="member-info">
-            <h3>Apuret Morris</h3>
-            <p class="position">Vice Chairman</p>
-            <p class="address">Otuke, Uganda</p>
-        </div>
     </div>
 
-    <div class="committee-member">
-        <img src="images/committee-images/secretary.jpg" alt="Committee Member">
-        <div class="member-info">
-            <h3>Okiring Ben</h3>
-            <p class="position">Secretary</p>
-            <p class="address">Kumi, Uganda</p>
-        </div>
-    </div>
-    <div class="committee-member">
-        <img src="images/committee-images/treasurer.jpg" alt="Committee Member">
-        <div class="member-info">
-            <h3>Apedun Esther</h3>
-            <p class="position">Treasurer</p>
-            <p class="address">Soroti, Uganda</p>
-        </div>
-    </div>
-    <div class="committee-member">
-        <img src="images/committee-images/auditor.jpg" alt="Committee Member">
-        <div class="member-info">
-            <h3>Eyaru Eric</h3>
-            <p class="position">Auditor</p>
-            <p class="address">Serere, Uganda</p>
-        </div>
-    </div>
+<div id="committee-content" class="tab-content">
+    <h2>Our Committee Members</h2>
+   <!--Committee Members -->
+   <div class="committee-grid">
+    <!-- Repeated blocks for 8 members -->
     <div class="committee-member">
         <img src="images/committee-images/member2.jpg" alt="Committee Member">
         <div class="member-info">
@@ -176,8 +142,94 @@
             <p class="address">Nwoya, Uganda</p>
         </div>
     </div>
+    <div class="committee-member">
+        <img src="images/committee-images/secretary.jpg" alt="Committee Member">
+        <div class="member-info">
+            <h3>Okiring Ben</h3>
+            <p class="position">Secretary</p>
+            <p class="address">Kumi, Uganda</p>
+        </div>
+    </div>
+    <div class="committee-member">
+        <img src="images/committee-images/treasurer.jpg" alt="Committee Member">
+        <div class="member-info">
+            <h3>Apedun Esther</h3>
+            <p class="position">Treasurer</p>
+            <p class="address">Soroti, Uganda</p>
+        </div>
+    </div>
+    <div class="committee-member">
+        <img src="images/committee-images/auditor.jpg" alt="Committee Member">
+        <div class="member-info">
+            <h3>Eyaru Eric</h3>
+            <p class="position">Auditor</p>
+            <p class="address">Serere, Uganda</p>
+        </div>
+    </div>
+    <div class="committee-member">
+        <img src="images/committee-images/vice-chairperson.jpg" alt="Committee Member">
+        <div class="member-info">
+            <h3>Apuret Morris</h3>
+            <p class="position">Vice Chairman</p>
+            <p class="address">Otuke, Uganda</p>
+        </div>
+    </div>
+
+    <div class="committee-section">
+        <!-- Chairperson -->
+        <div class="chairperson">
+            <img src="images/committee-images/chairperson.jpg" alt="Chairperson">
+            <div class="member-info">
+                <h3>Kanoni Erick</h3>
+                <p class="position">Uganda Conference Chairman</p>
+                <p class="address">Mukono, Uganda</p>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
+</div>
+</div>
+<div id="missions-content" class="tab-content">
+    <h2 class="missions-heading">Our Missions & Activities</h2>
+    
+    <div class="missions-grid">
+        <!-- International Missions -->
+        <div class="mission-card international">
+            <div class="mission-icon">🌍</div>
+            <h3>International Outreach</h3>
+            <ul class="mission-list">
+                <li><strong>South Sudan-Mission</strong><br>Evangelist Opio Jordan visited South Sudan in January and Churches there were Organised</li>
+                <li><strong>Zimbabwe Mission - March 2025</strong><br>Detailed report coming soon from Evangelist Jordan Opio</li>
+            </ul>
+        </div>
+
+        <!-- Local Evangelism -->
+        <div class="mission-card local">
+            <div class="mission-icon">🎤</div>
+            <h3>Uganda Evangelism</h3>
+            <ul class="mission-list">
+                <li>Nationwide evangelistic efforts to be held in multiple parts of the country</li>
+                <li><strong>National Camp-Meeting - August 2025</strong><br>Hoima District</li>
+                <li>Construction of humble worship houses across the country</li>
+            </ul>
+        </div>
+
+        <!-- Training Programs -->
+        <div class="mission-card training">
+            <div class="mission-icon">👨‍💻</div>
+            <h3>Workforce Development</h3>
+            <ul class="mission-list">
+                <li><strong>Kenya Training Program</strong><br>Two medical missionaries attended month-long training in March</li>
+                <li>2-3 Gospel workers attending <br>"One True God" training in Kenya this April</li>
+                <li>More workers to be sent for cookery training in Kenya at a date that will be communicated later</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="updates-note">
+        <p>🔔 Stay updated with our latest mission developments and event schedules</p>
+    </div>
 </div>
 </section>
 
