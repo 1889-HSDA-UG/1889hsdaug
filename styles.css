@@ -758,7 +758,7 @@ input, textarea {
 /* mobile logo css for the phone*/
 @media (max-width: 768px) {
   .logo h1 {
-    display: none;
+    font-size: 1.2rem;
   }
   
   .logo-img {
