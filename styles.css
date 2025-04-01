@@ -755,9 +755,107 @@ input, textarea {
   height: 50px; /* Adjust based on your logo */
   width: auto;
 }
-/* mobile logo css*/
-@media (max-width: 768px) {  
+/* mobile logo css for the phone*/
+@media (max-width: 768px) {
+  .logo h1 {
+    display: none;
+  }
+  
   .logo-img {
     height: 40px; /* Smaller logo on mobile */
+  }
+}
+
+/* Tab Styling */
+.about-tabs {
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+.tab-link {
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    transition: all 0.3s;
+}
+
+.tab-link.active {
+    color: #000;
+    border-bottom: 3px solid your-color;
+    font-weight: bold;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+
+.missions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.mission-card {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.mission-card:hover {
+  transform: translateY(-5px);
+}
+
+.mission-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.mission-card h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+.mission-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.mission-list li {
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.mission-list strong {
+  color: #e74c3c;
+}
+
+.updates-note {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #f0f8ff;
+  border-radius: 5px;
+  color: #2980b9;
+}
+
+@media (max-width: 768px) {
+  .missions-grid {
+      grid-template-columns: 1fr;
   }
 }

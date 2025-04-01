@@ -70,3 +70,21 @@ function showErrorMessage() {
     const statusDiv = document.querySelector('.form-status');
     statusDiv.innerHTML = '<div class="error-message">⚠️ Error sending message. Please try again.</div>';
 }
+
+function openTab(evt, tabName) {
+    // Hide all tab content
+    let tabContents = document.getElementsByClassName("tab-content");
+    for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove("active");
+    }
+
+    // Remove active class from all tab links
+    let tabLinks = document.getElementsByClassName("tab-link");
+    for (let i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].classList.remove("active");
+    }
+
+    // Show the selected tab content and mark button as active
+    document.getElementById(tabName).classList.add("active");
+    evt.currentTarget.classList.add("active");
+}
