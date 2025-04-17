@@ -1,3 +1,4 @@
+
 /* Committee Section Fixes */
 .committee-section {
   margin-top: 2rem;
@@ -857,5 +858,176 @@ input, textarea {
 @media (max-width: 768px) {
   .missions-grid {
       grid-template-columns: 1fr;
+  }
+}
+
+.more-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+/* Expanded state */
+.more-content.expanded {
+  max-height: 2000px; /* Adjust based on content needs */
+}
+
+.read-more-link {
+  display: inline-block;
+  color: #2c3e50;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 1rem 0;
+}
+
+.read-more-link::after {
+  content: '▼';
+  margin-left: 0.5rem;
+  font-size: 0.8em;
+}
+
+.read-more-link.expanded::after {
+  content: '▲';
+}
+
+/* Main Content Styling */
+#projects-content {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Container for Image Gallery */
+.image-container {
+  padding: 20px;
+  background: #f9f9f9;
+  margin-top: 30px;
+  border-top: 2px solid #ddd;
+}
+
+/* Headings for Image Gallery */
+.image-container h2,
+.image-container h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Gallery wrapper styling using Flexbox */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+/* Individual image styling */
+.gallery img {
+  width: 100%;
+  max-width: 200px;  /* Adjust as necessary */
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect for images */
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Specific styling for teacher images */
+.gallery.teachers img {
+  max-width: 400px; /* Larger display for the teacher group photo */
+}
+/* =========================== */
+/* Footer Styling             */
+/* =========================== */
+footer {
+  background: #2c3e50;
+  color: white;
+  padding: 2rem 1rem;
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-section h4 {
+  color: #4CAF50;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #4CAF50;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-links a {
+  color: white;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+}
+
+.footer-bottom p {
+  color: #ddd;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+  
+  .footer-links {
+    margin-bottom: 1.5rem;
   }
 }
