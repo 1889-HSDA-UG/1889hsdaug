@@ -1,93 +1,18 @@
-
-/* Committee Section Fixes */
-.committee-section {
-  margin-top: 2rem;
-  width: 100%; /* Add this */
-}
-
-.chairperson {
-  text-align: center;
-  margin-bottom: 2rem;
-  width: 100%; /* Add this */
-}
-
-.chairperson img {
-  width: 50%;
-  max-width: 400px;
-  height: auto;
-  border-radius: 8px;
-  margin: 0 auto 1rem; /* Center the image */
-  display: block; /* Add this */
-}
-
-.committee-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  width: 100%; /* Add this */
-}
-
-.committee-member {
-  width: 100%; /* Add this */
-  overflow: hidden; /* Prevent image overflow */
-}
-
-.committee-member img {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-  border-radius: 8px;
-  margin: 0 auto 1rem; /* Center images */
-  display: block; /* Add this */
-}
-
-/* Updated Media Queries */
-@media (max-width: 768px) {
-  .committee-section {
-    padding: 1rem;
-    max-width: 100vw; /* Prevent horizontal overflow */
-  }
-
-  .chairperson img {
-    width: 100%; /* Full width on mobile */
-    max-width: 300px; /* Keep reasonable max size */
-  }
-
-  .committee-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 0; /* Remove any default padding */
-  }
-
-  .committee-member {
-    max-width: 100%; /* Ensure members don't overflow */
-    padding: 0 !important; /* Override any conflicting padding */
-  }
-}
-
-@media (max-width: 480px) {
-  .chairperson img {
-    max-width: 250px;
-  }
-  
-  .committee-member {
-    margin: 0 auto; /* Center members */
-  }
-}
-
 /* =========================== */
-/* Global Reset & Base Styles  */
+/* Global Reset & Base Styles */
 /* =========================== */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif; /* Ensure Roboto is imported or available */
 }
 
 /* =========================== */
-/* Header & Navigation         */
+/* Header & Navigation        */
 /* =========================== */
+
 /* Header stays fixed at the top */
 header {
   background: #dadcf7;
@@ -96,7 +21,7 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 1000;
+  z-index: 1000; /* Ensure header is on top */
 }
 
 /* Navigation */
@@ -113,20 +38,34 @@ nav {
   color: #2c3e50;
 }
 
-/* Menu Toggle Button */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-img {
+  height: 50px; /* Adjust based on your logo */
+  width: auto;
+}
+
+/* Menu Toggle Button (Hamburger) */
 .menu-toggle {
-  display: none;
+  display: none; /* Hidden by default on larger screens */
   background: none;
   border: none;
   font-size: 1.8rem;
   cursor: pointer;
+  color: #333; /* Default color */
 }
 
-/* Navigation Links */
+/* Navigation Links (Desktop State) */
 .nav-links {
   list-style: none;
   display: flex;
   gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links a {
@@ -142,40 +81,62 @@ nav {
 
 /* Mobile Responsiveness for Navigation */
 @media (max-width: 768px) {
+  /* Show hamburger on mobile */
   .menu-toggle {
-    display: block;
+      display: block;
+      z-index: 1001; /* Ensure hamburger is above dropdown menu */
   }
-  
+
+  /* Style and hide nav links on mobile */
   .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #fff;
-    flex-direction: column;
-    gap: 0;
-    padding: 1rem;
-    display: none;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: absolute;
+      top: 100%; /* Position directly below the header */
+      left: 0;
+      right: 0;
+      background: #fff; /* Background for the dropdown */
+      flex-direction: column; /* Stack links vertically */
+      gap: 0;
+      padding: 1rem;
+      display: none; /* Hide nav by default on mobile */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 1000; /* Ensure nav is above content but below fixed header */
+      overflow-y: auto; /* Add scroll if menu is too long */
+      max-height: calc(100vh - 60px); /* Example max height, adjust based on header height */
   }
-  
+
+  /* Show nav when active */
   .nav-links.active {
-    display: flex;
+      display: flex;
   }
-  
+
   .nav-links li {
-    padding: 1rem;
-    border-bottom: 1px solid #eee;
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
   }
-  
+
+  .nav-links li:last-child {
+      border-bottom: none;
+  }
+
+  /* Adjust logo size on mobile */
   .logo h1 {
-    font-size: 1.2rem;
+      font-size: 1.2rem;
+  }
+  .logo-img {
+      height: 40px; /* Smaller logo on mobile */
   }
 }
 
+/* Keep 480px specific logo adjustment */
+@media (max-width: 480px) {
+  /* Add any further mobile-specific nav/header adjustments if needed */
+}
+
+
 /* =========================== */
-/* Content Sections            */
+/* Content Sections          */
 /* =========================== */
+
 /* Hide all sections by default */
 .content-section {
   display: none;
@@ -184,23 +145,73 @@ nav {
 /* Show active section */
 .content-section.active {
   display: block;
-  margin-top: 80px; /* Push content below fixed header */
+  margin-top: 80px; /* Push content below fixed header - adjust if header height changes */
   min-height: calc(100vh - 80px);
 }
 
+
 /* Hero Section */
 .hero {
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('church-image.jpg');
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('church-image.jpg'); /* Update image path */
   background-size: cover;
+  background-position: center; /* Center the background image */
   text-align: center;
   color: white;
+  display: flex; /* Use flexbox for content alignment */
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  min-height: calc(100vh - 80px); /* Ensure hero is at least viewport height minus header */
+  padding: 2rem 1rem; /* Add some padding */
 }
 
 .hero-content {
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center; /* Center items within hero-content */
+  max-width: 800px; /* Limit content width */
+  margin: 0 auto; /* Center hero-content block */
+  text-align: center; /* Ensure text is centered */
+}
+
+.hero-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 8px; /* Optional: add rounded corners */
+}
+
+.hero h2 {
+  margin-top: 1rem; /* Space above heading */
+  margin-bottom: 1.5rem; /* Space below heading */
+  font-size: 2rem;
+  color: white; /* Ensure heading is white */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Optional shadow for readability */
+}
+
+.hero p {
+  margin-bottom: 2rem; /* Space below paragraph */
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Optional shadow for readability */
+}
+
+.hero .btn { /* Style for the Learn More button */
+  display: inline-block;
+  background: #4CAF50; /* Example button color */
+  color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.hero .btn:hover {
+  background-color: #45a049;
 }
 
 /* General Section Styling */
@@ -211,16 +222,17 @@ nav {
 }
 
 /* About Section Styling */
+/* Keep existing #about padding, the .rounded-rectangle handles inner padding */
 #about {
   padding: 2rem 1rem;
 }
 
 .rounded-rectangle {
-  background-color: #d7f7fd;
+  background-color: #b4f2fd;
   border-radius: 15px;
   padding: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   text-align: left;
   line-height: 1.6;
@@ -240,91 +252,104 @@ nav {
 
 @media (max-width: 768px) {
   .rounded-rectangle {
-    padding: 1.5rem;
-    margin: 0 1rem;
+      padding: 1.5rem;
+      margin: 0 1rem;
   }
-  
   .rounded-rectangle p {
-    font-size: 1rem;
+      font-size: 1rem;
   }
 }
 
-/* Additional Section Styling */
-.section:not(#home) > * {
-  background-color: #d7f7fd;
-  border-radius: 15px;
-  padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: left;
-  line-height: 1.6;
-}
-
-.section:not(#home) h2 {
+.section:not(#home) h2 { /* Example if h2 is outside .rounded-rectangle */
   text-align: center;
   margin-bottom: 2rem;
   color: #2c3e50;
 }
-
-.section:not(#home) p {
+.section:not(#home) p { /* Example if p is outside .rounded-rectangle */
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
   color: #333;
 }
 
-/* Committee Section Fixes are already declared above, so duplicate rules have been removed */
+/* Committee Section in About - Updated Styles */
+#about .committee-section {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 0 1rem; /* Add padding for better mobile spacing */
+}
 
-/* added */
-.committee-member img {
+#about .committee-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px; /* Limit width for better readability */
+  margin: 0 auto;
+}
+
+#about .committee-member {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem; /* Updated padding */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Updated box-shadow */
   transition: transform 0.3s ease;
 }
 
-.committee-member:hover img {
-  transform: scale(1.03);
+#about .committee-member:hover {
+  transform: translateY(-5px);
 }
 
-/* Existing styles remain the same */
+#about .committee-member img {
+  width: 100%;
+  max-width: 200px;
+  height: auto; /* Changed from fixed height to auto */
+  border-radius: 8px; /* Changed from 50% to 8px */
+  margin: 0 auto 1rem;
+  display: block; /* Added display block */
+  object-fit: cover; /* Kept object-fit */
+}
 
-/* Add these media queries at the end */
+#about .committee-member h3 {
+  color: #2c3e50;
+  text-align: center;
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+#about .committee-member p {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Committee Section Media Queries (Consolidated) */
 @media (max-width: 768px) {
-  .committee-section {
-    padding: 1rem;
+  #about .committee-section {
+      padding: 1rem; /* Overrides base padding on smaller screens */
+      max-width: 100vw; /* Prevent horizontal overflow */
   }
-
-  .chairperson {
-    margin-bottom: 1.5rem;
+  #about .committee-grid {
+      grid-template-columns: 1fr; /* Single column on mobile */
+      gap: 1.5rem; /* Adjusted gap */
+      padding: 0; /* Remove any default padding */
   }
-
-  .chairperson img {
-    width: 80%; /* Adjust for mobile */
-    max-width: 300px;
-  }
-
-  .committee-grid {
-    grid-template-columns: 1fr; /* Single column on mobile */
-    gap: 1.5rem;
-  }
-
-  .committee-member img {
-    max-width: 100%; /* Full width for member images */
+  #about .committee-member {
+      max-width: 100%; /* Ensure members don't overflow */
+      padding: 0 !important; /* Use !important cautiously, consider restructuring HTML/CSS */
   }
 }
 
 @media (max-width: 480px) {
-  .chairperson img {
-    width: 100%;
-    max-width: 250px;
-  }
-  
-  .committee-member {
-    padding: 1rem;
+  #about .committee-member img {
+      max-width: 180px; /* Smaller image on very small screens */
   }
 }
 
+
 /* =========================== */
-/*Worship Places            */
+/* Worship Places           */
 /* =========================== */
+
 /* Services Card Styling */
 .service-cards {
   display: flex;
@@ -337,8 +362,9 @@ nav {
   background: white;
   padding: 1.5rem;
   border-radius: 10px;
-  width: 250px;
+  width: 250px; /* Fixed width - consider making this more flexible */
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center; /* Center card content */
 }
 
 .card i {
@@ -347,8 +373,20 @@ nav {
   color: #2c3e50;
 }
 
+.card h3 { /* Style for card titles */
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+  font-size: 1.2rem;
+}
+
+.card p { /* Style for card text */
+  font-size: 1rem;
+  color: #555;
+}
+
+
 /* =========================== */
-/* Contact Section Styling     */
+/* Contact Section Styling   */
 /* =========================== */
 #contact p {
   margin: 1rem 0;
@@ -373,6 +411,7 @@ nav {
   height: 60px;
   margin-bottom: 1rem;
   display: block;
+  max-width: 100%; /* Ensure logos are responsive */
 }
 
 .ussd-button {
@@ -408,7 +447,6 @@ nav {
   .payment-methods {
       grid-template-columns: 1fr;
   }
-  
   .payment-option {
       padding: 1rem;
   }
@@ -428,14 +466,18 @@ nav {
   font-size: 1.2em;
 }
 
+
 /* =========================== */
-/* Contact form styling   */ 
+/* Contact form styling   */
 /* =========================== */
 .contact-form {
   margin: 2rem 0;
   padding: 1.5rem;
-  background: #037ffc;
+  background: #037ffc; /* Consider if this background color fits the overall theme */
   border-radius: 8px;
+  max-width: 600px; /* Limit form width */
+  margin-left: auto;
+  margin-right: auto; /* Center the form */
 }
 
 .form-group {
@@ -458,16 +500,24 @@ input, textarea {
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s ease;
+  display: inline-block; /* Ensure spinner/text align */
+  position: relative; /* For spinner positioning */
+  text-align: center; /* Center text/spinner inside button */
+  min-width: 100px; /* Give button min width to prevent shrinking */
 }
 
 .submit-btn:hover {
   background: #34495e;
 }
 
+.submit-btn:disabled { /* Style for disabled state */
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
 .ussd-button.airtel {
   background: #E20404;
 }
-
 .ussd-button.airtel:hover {
   background: #C00404;
 }
@@ -480,34 +530,44 @@ input, textarea {
   border-top-color: transparent;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
-  display: none;
+  display: inline-block; /* Changed from none to inline-block for positioning */
+  vertical-align: middle; /* Align with text */
+  margin: 0 auto; /* Center if display: block */
 }
 
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
 
-.submit-btn {
-  position: relative;
+/* Make sure text is hidden and spinner is shown correctly */
+.submit-btn .btn-text.hidden { display: none; }
+.submit-btn .spinner.hidden { display: none; }
+.submit-btn .spinner:not(.hidden) { display: inline-block; } /* Explicitly show spinner when not hidden */
+
+.form-status { /* Style for success/error messages */
+  margin-top: 1rem;
+  padding: 0.8rem;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
 }
 
-.hidden {
-  display: none;
+.form-status .success-message {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
 }
 
-.visible {
-  display: inline-block;
+.form-status .error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
 }
 
 /* =========================== */
 /* Hero Image & Document Links */
 /* =========================== */
-.hero-image {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 1rem auto;
-}
+/* Hero image is already styled in .hero section */
 
 .docs-links {
   margin: 1rem 0;
@@ -523,6 +583,7 @@ input, textarea {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   margin: 0 0.5rem;
   transition: background-color 0.3s ease;
+  display: inline-block; /* Ensure proper margin/padding */
 }
 
 .docs-links a:hover {
@@ -531,8 +592,8 @@ input, textarea {
 
 @media (max-width: 768px) {
   .docs-links a {
-    display: block;
-    margin: 0.5rem auto;
+      display: block; /* Stack links vertically on mobile */
+      margin: 0.5rem auto;
   }
 }
 
@@ -545,22 +606,30 @@ input, textarea {
 }
 
 .pdf-category {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
   border-radius: 10px;
   margin-bottom: 1rem;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  overflow: hidden; /* Contain rounded corners */
 }
 
 .category-header {
   padding: 1rem 1.5rem;
   background: #4CAF50;
   color: white;
-  border-radius: 10px;
+  border-radius: 10px; /* Applied here for consistent header look */
   cursor: pointer;
   list-style: none;
   display: flex;
   align-items: center;
   gap: 1rem;
+  font-weight: bold; /* Make header text bold */
+}
+
+/* Ensure border-radius on header matches container */
+.pdf-category:not([open]) .category-header {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .category-header::-webkit-details-marker {
@@ -569,6 +638,8 @@ input, textarea {
 
 .pdf-category[open] .category-header {
   background: #45a049;
+  border-bottom-left-radius: 0; /* Remove bottom radius when open */
+  border-bottom-right-radius: 0;
 }
 
 .pdf-grid {
@@ -587,12 +658,18 @@ input, textarea {
   border-radius: 8px;
   color: #2c3e50;
   text-decoration: none;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Add box-shadow transition */
 }
 
 .pdf-link:hover {
   transform: translateY(-2px);
   background: #e9ecef;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Add shadow on hover */
+}
+
+.pdf-link i { /* Style for the PDF icon */
+  color: #e74c3c; /* Example color */
+  font-size: 1.2rem;
 }
 
 .external-link-box {
@@ -616,15 +693,19 @@ input, textarea {
   background: #1a252f;
 }
 
+.external-link i { /* Style for external link icon */
+  font-size: 1em; /* Match text size */
+}
+
 @media (max-width: 768px) {
   .pdf-grid {
-    grid-template-columns: 1fr;
+      grid-template-columns: 1fr;
   }
-  
   .category-header {
-    padding: 1rem;
+      padding: 1rem;
   }
 }
+
 
 /* =========================== */
 /* Church Grid with Descriptions */
@@ -724,80 +805,66 @@ input, textarea {
 /* Responsive Adjustments for Church Grid */
 @media (max-width: 768px) {
   .church-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+      grid-template-columns: 1fr;
+      gap: 2rem;
   }
-  
   .church-image {
-    height: 200px;
+      height: 200px;
   }
-  
   .description {
-    font-size: 0.9rem;
+      font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
   .services-container {
-    padding: 1rem;
+      padding: 1rem;
   }
-  
   .church-content {
-    padding: 1rem;
+      padding: 1rem;
   }
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 15px;
 }
 
-.logo-img {
-  height: 50px; /* Adjust based on your logo */
-  width: auto;
-}
-/* mobile logo css for the phone*/
-@media (max-width: 768px) {
-  .logo h1 {
-    font-size: 1.2rem;
-  }
-  
-  .logo-img {
-    height: 40px; /* Smaller logo on mobile */
-  }
-}
 
 /* Tab Styling */
 .about-tabs {
-    margin-bottom: 20px;
-    border-bottom: 2px solid #ddd;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd; /* Line below tabs */
+  display: flex; /* Arrange tabs horizontally */
+  overflow-x: auto; /* Add scroll for many tabs on small screens */
+  -webkit-overflow-scrolling: touch; /* Improve scrolling on touch devices */
 }
 
 .tab-link {
-    padding: 10px 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    color: #f66d6d;
-    transition: all 0.3s;
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #f66d6d; /* Default color */
+  transition: all 0.3s;
+  white-space: nowrap; /* Prevent tab text from wrapping */
 }
 
+/* Style the active tab link */
 .tab-link.active {
-    color: #000;
-    border-bottom: 3px solid your-color;
-    font-weight: bold;
+  color: #000; /* Active color */
+  border-bottom: 3px solid #4CAF50; /* Underline for active tab - adjust color */
+  font-weight: bold;
 }
 
 .tab-content {
-    display: none;
+  display: none; /* Hide all tab content by default */
+  padding-top: 20px; /* Add some space above content below tabs */
 }
 
+/* Show the active tab content */
 .tab-content.active {
-    display: block;
+  display: block;
 }
 
 
+/* Missions Grid */
 .missions-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -811,6 +878,8 @@ input, textarea {
   padding: 1.5rem;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
+  display: flex; /* Use flex to align icon, heading, and list */
+  flex-direction: column;
 }
 
 .mission-card:hover {
@@ -820,6 +889,8 @@ input, textarea {
 .mission-icon {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  text-align: center; /* Center the icon */
+  color: #3498db; /* Example color */
 }
 
 .mission-card h3 {
@@ -827,11 +898,13 @@ input, textarea {
   margin-bottom: 1rem;
   border-bottom: 2px solid #3498db;
   padding-bottom: 0.5rem;
+  text-align: center; /* Center the heading */
 }
 
 .mission-list {
   list-style: none;
   padding-left: 0;
+  flex-grow: 1; /* Allow list to take up remaining space */
 }
 
 .mission-list li {
@@ -853,6 +926,7 @@ input, textarea {
   background: #f0f8ff;
   border-radius: 5px;
   color: #2980b9;
+  border: 1px solid #b3d8ff; /* Optional border */
 }
 
 @media (max-width: 768px) {
@@ -861,15 +935,17 @@ input, textarea {
   }
 }
 
+
+/* Read More Functionality Styles */
 .more-content {
-  max-height: 0;
+  max-height: 0; /* Initially hidden */
   overflow: hidden;
-  transition: max-height 0.3s ease-out;
+  transition: max-height 0.3s ease-out; /* Smooth transition */
 }
 
 /* Expanded state */
 .more-content.expanded {
-  max-height: 2000px; /* Adjust based on content needs */
+  max-height: 2000px; /* Large enough value to accommodate content */
 }
 
 .read-more-link {
@@ -878,23 +954,50 @@ input, textarea {
   font-weight: 600;
   cursor: pointer;
   margin: 1rem 0;
+  text-decoration: none; /* Remove default underline */
+  border-bottom: 1px dashed #2c3e50; /* Optional: add a dashed underline */
+  transition: border-bottom-color 0.3s ease;
+}
+
+.read-more-link:hover {
+  border-bottom-color: transparent; /* Hide underline on hover */
 }
 
 .read-more-link::after {
-  content: '▼';
-  margin-left: 0.5rem;
+  content: ' ▼'; /* Add space before triangle */
+  margin-left: 0.2rem;
   font-size: 0.8em;
+  vertical-align: middle; /* Align triangle */
 }
 
 .read-more-link.expanded::after {
-  content: '▲';
+  content: ' ▲'; /* Add space before triangle */
 }
 
-/* Main Content Styling */
+
+/* Main Content Styling for Projects Tab */
+/* Ensure this styling doesn't conflict with .rounded-rectangle if used inside */
 #projects-content {
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  padding: 0; /* Remove padding if .rounded-rectangle is used inside */
+  font-family: Arial, sans-serif; /* Consider using the main Roboto font */
   line-height: 1.6;
+}
+
+#projects-content h2,
+#projects-content h3,
+#projects-content h4 { /* Style headings within projects */
+  color: #2c3e50;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+#projects-content section { /* Add padding to sections within projects */
+  padding: 1rem 0;
+}
+
+#projects-content p { /* Style paragraphs within projects */
+  margin-bottom: 1rem;
+  color: #333;
 }
 
 /* Container for Image Gallery */
@@ -903,13 +1006,14 @@ input, textarea {
   background: #f9f9f9;
   margin-top: 30px;
   border-top: 2px solid #ddd;
+  border-radius: 8px; /* Optional: add rounded corners */
 }
 
 /* Headings for Image Gallery */
 .image-container h2,
 .image-container h3 {
   color: #333;
-  margin-bottom: 10px;
+  margin-bottom: 15px; /* Increase space below headings */
 }
 
 /* Gallery wrapper styling using Flexbox */
@@ -918,6 +1022,7 @@ input, textarea {
   flex-wrap: wrap;
   gap: 15px;
   margin-bottom: 30px;
+  justify-content: center; /* Center images in the gallery */
 }
 
 /* Individual image styling */
@@ -927,36 +1032,40 @@ input, textarea {
   height: auto;
   border: 1px solid #ddd;
   border-radius: 4px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add shadow transition */
 }
 
 /* Hover effect for images */
 .gallery img:hover {
   transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Add shadow on hover */
 }
 
 /* Specific styling for teacher images */
 .gallery.teachers img {
   max-width: 400px; /* Larger display for the teacher group photo */
 }
-/* =========================== */
-/* Footer Styling             */
-/* =========================== */
+/* Footer Styles */
 footer {
-  background: #2c3e50;
-  color: white;
-  padding: 2rem 1rem;
+  background-color: #445a70;
+  color: #ecf0f1;
+  padding: 2rem 0;
   margin-top: auto;
+  font-family: 'Roboto', sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  justify-content: space-between;
+  margin-bottom: 2rem;
 }
 
 .footer-section {
@@ -965,9 +1074,10 @@ footer {
 }
 
 .footer-section h4 {
-  color: #4CAF50;
+  color: #07f84b;
   margin-bottom: 1rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  padding-bottom: 0.5rem;
 }
 
 .footer-links {
@@ -980,13 +1090,13 @@ footer {
 }
 
 .footer-links a {
-  color: #ddd;
+  color: #ecf0f1;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: #4CAF50;
+  color: #e67e22;
 }
 
 .social-links {
@@ -996,38 +1106,40 @@ footer {
 }
 
 .social-links a {
-  color: white;
+  color: #ecf0f1;
   font-size: 1.5rem;
-  transition: transform 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .social-links a:hover {
-  transform: translateY(-3px);
+  color: #e67e22;
 }
 
 .footer-bottom {
   text-align: center;
-  padding-top: 1.5rem;
-  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #34495e;
+  font-size: 0.9rem;
 }
 
 .footer-bottom p {
-  color: #ddd;
-  font-size: 0.9rem;
   margin: 0;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .footer-content {
-    flex-direction: column;
-    text-align: center;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
   }
-  
+
+  .footer-section {
+      width: 100%;
+      text-align: center;
+  }
+
   .social-links {
-    justify-content: center;
-  }
-  
-  .footer-links {
-    margin-bottom: 1.5rem;
+      justify-content: center;
   }
 }
