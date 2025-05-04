@@ -128,10 +128,9 @@ nav {
 }
 
 /* Keep 480px specific logo adjustment */
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   /* Add any further mobile-specific nav/header adjustments if needed */
 }
-
 
 /* =========================== */
 /* Content Sections          */
